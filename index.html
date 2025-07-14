@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjay G | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00f0ff;
+            --neon-purple: #9600ff;
+            --neon-pink: #ff00c1;
+            --dark-space: #0a0a18;
+            --deep-space: #121230;
+            --cyber-text: #00ffd0;
+            --matrix-green: #00ff41;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--dark-space);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Cyberpunk Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--deep-space);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--neon-blue), var(--neon-purple));
+            border-radius: 5px;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 2rem;
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--cyber-text);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--neon-blue);
+            transform: translateY(-5px);
+        }
+        
+        /* Section Styling */
+        section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-blue);
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-blue);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            border-radius: 3px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 2px;
+            background: var(--neon-blue);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -3px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            border: 2px solid var(--dark-space);
+        }
+        
+        .timeline-date {
+            font-weight: 500;
+            color: var(--cyber-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .timeline-subtitle {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-item {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .skill-item:hover {
+            background: var(--neon-blue);
+            color: var(--dark-space);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+        }
+        
+        /* Languages Grid */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .language-item {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .language-item:hover {
+            background: var(--neon-blue);
+            color: var(--dark-space);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+        }
+        
+        /* Project Cards */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--neon-blue);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tech-tag {
+            background: rgba(150, 0, 255, 0.2);
+            color: var(--neon-purple);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+        }
+        
+        /* Matrix Rain Effect */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        /* Resume Download Section */
+        .resume-download {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 240, 255, 0.05);
+            border: 2px dashed rgba(0, 240, 255, 0.3);
+            border-radius: 10px;
+            margin: 2rem 0;
+            transition: all 0.3s;
+        }
+        
+        .resume-download:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--neon-blue);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--dark-space);
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .skills-grid,
+            .languages-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-rain" class="matrix-rain"></canvas>
+    
+    <div class="container">
+        <header>
+            <div class="profile-image">
+                <!-- Replace with your actual image -->
+                <img src="sanjay photo.jpg" alt="Sanjay G" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <h1>SANJAY G</h1>
+            <h2>Aspiring AI & IT Professional | Passionate about Innovative Technologies</h2>
+            
+            <div class="social-links">
+                <a href="mailto:sanjay2526gs@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/sanjay-g-51563025a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:9080654740"><i class="fas fa-phone"></i></a>
+                <a href="https://github.com/SANJAY0777"><i class="fab fa-github"></i></a>
+            </div>
+        </header>
+        
+        <!-- Resume Download Section -->
+        <section id="resume">
+            <h2 class="section-title">DOWNLOAD RESUME</h2>
+            <div class="resume-download">
+                <a href="C:\onedrive\Desktop\vs code\portfoilio\SANJAY G (4).pdf" class="download-btn" download>
+                    <i class="fas fa-download"></i> DOWNLOAD RESUME
+                </a>
+            </div>
+        </section>
+        
+        <section id="about">
+            <h2 class="section-title">OBJECTIVE</h2>
+            <p>Enthusiastic AI & Data Science student with strong programming skills and internship experience, seeking an entry-level role to contribute to real-world tech projects and grow in a collaborative environment.</p>
+        </section>
+        
+        <section id="education">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2026</div>
+                    <h3 class="timeline-title">B. Tech Artificial Intelligence and Data Science</h3>
+                    <p class="timeline-subtitle">KNOWLEDGE INSTITUTE OF TECHNOLOGY, SALEM</p>
+                    <p>CGPA: 7.8 (upto 5th semester)</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2022</div>
+                    <h3 class="timeline-title">HSC</h3>
+                    <p class="timeline-subtitle">ROYAL PARK SCHOOL, SALEM</p>
+                    <p>Percentage: 72%</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <h3 class="timeline-title">SSLC</h3>
+                    <p class="timeline-subtitle">ROYAL PARK SCHOOL, SALEM</p>
+                    <p>Percentage: 95%</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Java</div>
+                <div class="skill-item">C</div>
+                <div class="skill-item">SQL</div>
+                <div class="skill-item">Figma</div>
+                <div class="skill-item">Web Development</div>
+            </div>
+        </section>
+        
+        <!-- Languages Section -->
+        <section id="languages">
+            <h2 class="section-title">LANGUAGES</h2>
+            <div class="languages-grid">
+                <div class="language-item">English</div>
+                <div class="language-item">Tamil</div>
+                <div class="language-item">Japanese (N5 Learner)</div>
+            </div>
+        </section>
+        
+        <section id="internships">
+            <h2 class="section-title">INTERNSHIPS</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">March 2024 - April 2024</div>
+                    <h3 class="timeline-title">Machine Learning Intern</h3>
+                    <p class="timeline-subtitle">CODSOFT</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Completed a Machine Learning internship working on real-world problem solving projects</li>
+                        <li>Developed solutions for customer churn analysis and credit card fraud detection</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">July 2024 - August 2024</div>
+                    <h3 class="timeline-title">Java Full Stack Developer Intern</h3>
+                    <p class="timeline-subtitle">DEV TECHNOLOGY SOLUTIONS</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Focused on problem-solving through web application development</li>
+                        <li>Utilized Java, Oracle database, and front-end technologies</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">February 2025 - March 2025</div>
+                    <h3 class="timeline-title">Web Development Intern</h3>
+                    <p class="timeline-subtitle">PRODIGY INFOTECH</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Built responsive webpages using HTML, CSS and JavaScript</li>
+                        <li>Improved coding skills and gained experience in web design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="project-card">
+                <h3 class="project-title">Student Database Management System</h3>
+                <p>Created a Student Database Management System during my Java Full Stack internship, featuring secure authentication and data management.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Oracle</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certifications">
+            <h2 class="section-title">CERTIFICATIONS</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li>Python Programming – GUVI</li>
+                <li>Programming in Java (Elite + Silver) – NPTEL</li>
+                <li>Attended a workshop on Web Development</li>
+                <li>Attended a 24-hour Hackathon</li>
+                <li>Secured 1st Prize in "Bottle Walker" Game</li>
+            </ul>
+        </section>
+        
+        <section id="hobbies">
+            <h2 class="section-title">HOBBIES</h2>
+            <p>Duolingo, Codechef, Daily News updation, Current Affairs Observer, Drawing, etc.</p>
+        </section>
+        
+        <section id="contact">
+            <h2 class="section-title">CONTACT</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>9080654740</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>sanjay2526gs@gmail.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>8/155, Ramanathapuram, Ammapet, Salem-636003</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                    <div>SANJAY G | LinkedIn</div>
+                </div>
+            </div>
+        </section>
+        
+        <footer style="text-align: center; padding: 2rem 0; margin-top: 2rem; color: rgba(255, 255, 255, 0.6);">
+            <p>&copy; <span id="year"></span> Sanjay G. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
